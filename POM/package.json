@@ -3,7 +3,7 @@
   "description": "Automated tests",
   "license": "MIT",
   "scripts": {
-    "test-desktop": "./node_modules/.bin/wdio wdio.deskcustomreporter.conf.js"
+    "test-desktop": "./node_modules/.bin/wdio wdio.conf.js --reporter wdio.deskcustomreporter.conf.js"
   },
   "devDependencies": {
     "mocha": "^5.2.0",

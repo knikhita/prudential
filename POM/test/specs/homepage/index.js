@@ -1,13 +1,17 @@
-const assert = require('chai').assert
 const Homepage = require('../pages/home.page')
 const SearchCity = require('../pages/searchcity.page')
+const chai = require('chai'),
+    	expect = chai.expect,
+    	should = chai.should();
 
-const b = browser
-b.windowHandleSize({width:1280,height:800});
+			beforeEach(function() {
+				const b = browser
+	 		 b.windowHandleSize({width:1280,height:800});
+	 });
 
 describe('Open Weather Map > Home Page Test cases :  ', ()=>{
 
-	describe('verify header options : ', ()=>{
+	context('verify header options : ', ()=>{
 		it('Header containing menu should be available',()=>{
 			Homepage.headerMenu.isVisible();
 		})
@@ -32,7 +36,7 @@ describe('Open Weather Map > Home Page Test cases :  ', ()=>{
 		})
   })
 
-	describe('verify buttons available : ', ()=>{
+	context('verify buttons available : ', ()=>{
 		it('Try Free Apis button should be available',()=>{
 			Homepage.tryFreeApis.click();
 		})
@@ -44,7 +48,7 @@ describe('Open Weather Map > Home Page Test cases :  ', ()=>{
 
 describe('Open Weather Map > Search City Test cases :  ', ()=>{
 
-	describe('Search Invalid City  : ', ()=>{
+	context('Search Invalid City  : ', ()=>{
 		it('from search option 1 : Header search',()=>{
 			SearchCity.search1();
 			searchResult = 'Not found'
@@ -52,11 +56,23 @@ describe('Open Weather Map > Search City Test cases :  ', ()=>{
 		})
   })
 
-	describe('Search Valid City  : ', ()=>{
+	context('Search Valid City  : ', ()=>{
 		it('from search option 2 : Main body',()=>{
 			SearchCity.search2();
 			searchResult = cityData.validCity
 			expect('table.table').to.be.there()
+		})
+		it('autosuggestion dropdown should be shown',()=>{
+			SearchCity.search2();
+			searchResult = cityData.validCity
+
+		})
+  })
+
+	context('Current location : ', ()=>{
+		it('should ask for location permission',()=>{
+			SearchCity.currentLocation().click();
+			expect('.widget__layout').to.have.text('allow Geo location access')
 		})
   })
 })

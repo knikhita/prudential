@@ -15,6 +15,7 @@ class SearchCity{
   // Search option from : main body of the page
   get searchText2() {return b.element('#q.form-control.border-color.col-sm-12') }
   get submit2() {return b.element('.btn.btn-orange:eq(0)')}
+  get currentLocation() {return b.element('.btn.search-cities__lnk')}
 
   // Search city option from : widgets-constructor
   get searchAPIKeyCity() {return b.element('#search-city') }
