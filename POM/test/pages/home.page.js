@@ -7,7 +7,6 @@ class Homepage {
 	open(path) {
 		b.url('/'+path)
 	}
-	// Verifies that all important information is there
 
  // verify header options
 	get headerMenu(){return b.element('.nav.navbar-nav.navbar-right')}
