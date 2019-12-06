@@ -8,7 +8,6 @@ class Homepage {
 		b.url('/'+path)
 	}
 
- // verify header options
 	get headerMenu(){return b.element('.nav.navbar-nav.navbar-right')}
 	get logo() {return b.element('.navbar-brand')}
 	get weatherOption() {return b.element('.nav.navbar-nav.navbar-right:eq(0)')}
